@@ -9,13 +9,13 @@ import Routes from './routes';
 
 const App = () => {
   return (
-    <BrowserRouter>
-      {/* <Provider store={store}> */}
+    // <BrowserRouter>
+    <Provider store={store}>
       <GlobalStyle />
       <Header />
       <Routes />
-      {/* </Provider> */}
-    </BrowserRouter>
+    </Provider>
+    // </BrowserRouter>
   );
 };
 export default App;
