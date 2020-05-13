@@ -4,18 +4,19 @@ import createSagaMiddleware from 'redux-saga';
 import rootReducer from './modules/rootReducer';
 import rootSaga from './modules/rootSaga';
 
-const sagaMonitor = null;
-
-const sagaMiddleware = createSagaMiddleware({
-  sagaMonitor,
-});
-
-const enhancer =
+const sagaMonitor =
   process.env.NODE_ENV === 'development'
-    ? compose(applyMiddleware(sagaMiddleware))
-    : applyMiddleware(sagaMiddleware);
+    ? console.tron.createSagaMonitor()
+    : null;
+const sagaMiddleware = createSagaMiddleware({ sagaMonitor });
+const middlewares = [sagaMiddleware];
 
-const store = createStore(rootReducer, enhancer);
+const composer =
+  process.env.NODE_ENV === 'development'
+    ? compose(applyMiddleware(...middlewares))
+    : applyMiddleware(...middlewares);
+
+const store = createStore(rootReducer, composer);
 
 sagaMiddleware.run(rootSaga);
 
