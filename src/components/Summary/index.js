@@ -2,25 +2,18 @@ import React from 'react';
 
 import { Container, ListSummary, ItemToSummary } from './styles';
 
-const Summary = () => {
+const Summary = ({ dataState }) => {
+  const posts = dataState.post.posts;
+
   return (
     <Container>
       <ListSummary>
-        <ItemToSummary>
-          <span>ITEM 1</span>
-        </ItemToSummary>
-        <ItemToSummary>
-          <span>ITEM 1</span>
-        </ItemToSummary>
-        <ItemToSummary>
-          <span>ITEM 1</span>
-        </ItemToSummary>
-        <ItemToSummary>
-          <span>ITEM 1</span>
-        </ItemToSummary>
-        <ItemToSummary>
-          <span>ITEM 1</span>
-        </ItemToSummary>
+        <h5>Ultimas postagens</h5>
+        {posts.map((post) => (
+          <ItemToSummary>
+            <span>{post.title}</span>
+          </ItemToSummary>
+        ))}
       </ListSummary>
     </Container>
   );

@@ -11,11 +11,15 @@ export const ListSummary = styled.div`
   width: 100%;
   display: flex;
   flex-direction: column;
+  h5 {
+    padding: 5px;
+  }
 `;
 
 export const ItemToSummary = styled.div`
   width: 100%;
   padding: 5px;
-  span {
-  }
+  color: #616161;
+  font-weight: bold;
+  font-size: 15px;
 `;

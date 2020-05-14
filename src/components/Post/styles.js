@@ -21,26 +21,29 @@ export const HeadPost = styled.div`
   display: flex;
   justify-content: space-between;
   flex-direction: row;
-  margin-bottom: 8px;
+  margin-bottom: 20px;
 `;
 
-export const InfoPublished = styled.div``;
+export const InfoPublished = styled.div`
+  max-width: 400px;
+`;
 
 export const DatePublished = styled.div`
-  color: #90a4ae;
-  font-size: 12px;
+  color: #616161;
+  font-size: 10px;
   font-family: Arial, Helvetica, sans-serif;
 `;
 
 export const TitlePost = styled.div`
-  color: #90a4ae;
+  color: #424242;
   font-weight: bold;
   font-size: 15px;
   text-transform: uppercase;
+  margin-bottom: 2px;
 `;
 
 export const AutorPost = styled.div`
-  color: #90a4ae;
+  color: #616161;
   font-size: 11px;
 `;
 
@@ -49,4 +52,6 @@ export const DatePost = styled.div``;
 export const BodyPost = styled.div`
   font-family: 'Graphik-Regular', 'Gotham SSm A', 'Gotham SSm B',
     'Helvetica Neue', Helvetica, Arial, sans-serif !important;
+  color: #757575;
+  font-size: 14px;
 `;

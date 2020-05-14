@@ -1,7 +1,4 @@
-import React, { useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import { getAuthors } from '../../store/modules/author/actions';
-import { getPosts } from '../../store/modules/post/actions';
+import React from 'react';
 import {
   Container,
   ListPost,
@@ -15,41 +12,45 @@ import {
   BodyPost,
 } from './styles';
 
-const Post = () => {
-  const dataState = useSelector((state) => state);
-  const dispatch = useDispatch();
+import { formatDistanceToNow } from 'date-fns';
+import { pt } from 'date-fns/locale';
 
-  useEffect(() => {
-    dispatch(getAuthors());
-    dispatch(getPosts());
-  }, []);
+const Post = ({ dataState }) => {
+  const posts = dataState.post.posts;
+  const authors = dataState.author.authors;
+
+  const getNameAuthor = () => {
+    posts.map((post, index) => {
+      const item = authors.find((val) => val.id === post.metadata.authorId);
+      if (item) {
+        return (posts[index].metadata.name = item.name);
+      }
+    });
+  };
+
+  getNameAuthor();
+
+  const getDatePost = (date) => {
+    return formatDistanceToNow(date, { locale: pt });
+  };
 
   return (
     <Container>
       <ListPost>
-        {console.log(dataState)}
-        <ItemPost>
-          <HeadPost>
-            <InfoPublished>
-              <TitlePost>Nome do post</TitlePost>
-              <AutorPost>Kelvin Musselli</AutorPost>
-            </InfoPublished>
-            <DatePublished>
-              <DatePost>22/11/1996</DatePost>
-            </DatePublished>
-          </HeadPost>
-          <BodyPost>
-            s simply dummy text of the printing and typesetting industry. Lorem
-            Ipsum has been the industry's standard dummy text ever since the
-            1500s, when an unknown printer took a galley of type and scrambled
-            it to make a type specimen book. It has survived not only five
-            centuries, but also the leap into electronic typesetting, remaining
-            essentially unchanged. It was popularised in the 1960s with the
-            release of Letraset sheets containing Lorem Ipsum passages, and more
-            recently with desktop publishing software like Aldus PageMaker
-            including versions of Lorem Ipsum.
-          </BodyPost>
-        </ItemPost>
+        {posts.map((post) => (
+          <ItemPost key={post.id}>
+            <HeadPost>
+              <InfoPublished>
+                <TitlePost>{post.title}</TitlePost>
+                <AutorPost>{post.metadata.name}</AutorPost>
+              </InfoPublished>
+              <DatePublished>
+                <DatePost>{getDatePost(post.metadata.publishedAt)}</DatePost>
+              </DatePublished>
+            </HeadPost>
+            <BodyPost>{post.body}</BodyPost>
+          </ItemPost>
+        ))}
       </ListPost>
     </Container>
   );
