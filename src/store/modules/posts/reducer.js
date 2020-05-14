@@ -1,12 +1,11 @@
-import produce from 'immer';
+const INITIAL_STATE = {
+  data: [],
+};
 
-const posts = (state = [], action) => {
+const posts = (state = INITIAL_STATE, action) => {
   switch (action.type) {
-    case '@posts/GET_POSTS':
-      return produce(state, (draft) => {
-        console.log(draft);
-      });
-
+    case 'GET_POSTS':
+      return { ...state, data: [...state.data, action] };
     default:
       return state;
   }

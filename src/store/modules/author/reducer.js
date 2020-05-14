@@ -1,12 +1,11 @@
-import produce from 'immer';
+const INITIAL_STATE = {
+  data: [],
+};
 
-const author = (state = [], action) => {
+const author = (state = INITIAL_STATE, action) => {
   switch (action.type) {
-    case '@authors/GET_AUTHORS':
-      return produce(state, (draft) => {
-        console.log(draft);
-      });
-
+    case 'GET_AUTHORS':
+      return { ...state, data: [...state.data, action] };
     default:
       return state;
   }

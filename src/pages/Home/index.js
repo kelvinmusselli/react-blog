@@ -1,5 +1,4 @@
 import React from 'react';
-
 import { Container, Content, HeaderContent, BodyContent } from './styles';
 
 import Filters from '../../components/Filters';

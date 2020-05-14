@@ -1,5 +1,5 @@
 export function getAuthors() {
   return {
-    type: '@authors/GET_AUTHORS',
+    type: 'GET_AUTHORS',
   };
 }

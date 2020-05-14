@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
-
+import { useSelector, useDispatch } from 'react-redux';
+import { getAuthors } from '../../store/modules/author/actions';
 import {
   Container,
   ListPost,
@@ -14,11 +15,24 @@ import {
 } from './styles';
 
 const Post = () => {
-  const [data, setData] = useState([]);
+  const [author, setAuthor] = useState([]);
+  // const [post, setPost] = useState([]);
+
+  const dataState = useSelector((state) => state.data);
+
+  const dispatch = useDispatch();
+
+  // useEffect(() => {
+  console.log(dispatch(getAuthors()));
+
+  // setAuthor(dispatch(getAuthors()));
+  // setPost(dispatch({ type: 'GET_POSTS', dataState }));
+  // }, []);
 
   return (
     <Container>
       <ListPost>
+        {[] || post.map((p) => console.log(p))}
         <ItemPost>
           <HeadPost>
             <InfoPublished>
