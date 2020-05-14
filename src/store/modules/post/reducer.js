@@ -3,10 +3,9 @@ const INITIAL_STATE = {
 };
 
 const post = (state = INITIAL_STATE, action) => {
-  console.log(action);
   switch (action.type) {
     case 'UPDATE_POSTS':
-      return { ...state, posts: [...action.payload.posts] };
+      return { ...state, posts: action.payload.posts.data };
     default:
       return state;
   }

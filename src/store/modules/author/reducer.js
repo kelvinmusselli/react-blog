@@ -5,7 +5,7 @@ const INITIAL_STATE = {
 const author = (state = INITIAL_STATE, action) => {
   switch (action.type) {
     case 'UPDATE_AUTHORS':
-      return { ...state, authors: [...action.payload.authors] };
+      return { ...state, authors: action.payload.authors };
     default:
       return state;
   }
