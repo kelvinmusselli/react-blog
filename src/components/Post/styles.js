@@ -54,4 +54,5 @@ export const BodyPost = styled.div`
     'Helvetica Neue', Helvetica, Arial, sans-serif !important;
   color: #757575;
   font-size: 14px;
+  padding-bottom: 10px;
 `;
