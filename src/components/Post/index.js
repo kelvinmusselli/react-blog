@@ -19,7 +19,6 @@ const Post = ({ dataState, filteredByAuthor, filteredByDate }) => {
   const posts = dataState.post.posts;
   const authors = dataState.author.authors;
   const filteredPosts = [];
-  const filteredPostsByDate = [];
 
   if (filteredByAuthor) {
     posts.find((post) => {
