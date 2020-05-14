@@ -8,9 +8,9 @@ const Summary = ({ dataState }) => {
   return (
     <Container>
       <ListSummary>
-        <h5>Ultimas postagens</h5>
-        {posts.map((post) => (
-          <ItemToSummary>
+        <h4>Ultimas postagens</h4>
+        {posts.map((post, index) => (
+          <ItemToSummary key={index}>
             <span>{post.title}</span>
           </ItemToSummary>
         ))}

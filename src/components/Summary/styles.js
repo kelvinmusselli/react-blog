@@ -11,8 +11,9 @@ export const ListSummary = styled.div`
   width: 100%;
   display: flex;
   flex-direction: column;
-  h5 {
+  h4 {
     padding: 5px;
+    color: #424242;
   }
 `;
 

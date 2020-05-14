@@ -37,8 +37,8 @@ const Post = ({ dataState }) => {
   return (
     <Container>
       <ListPost>
-        {posts.map((post) => (
-          <ItemPost key={post.id}>
+        {posts.map((post, index) => (
+          <ItemPost key={index}>
             <HeadPost>
               <InfoPublished>
                 <TitlePost>{post.title}</TitlePost>
