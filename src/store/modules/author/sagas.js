@@ -7,7 +7,7 @@ function* get_authors() {
     const data = yield call(api.get, 'v2/5be5e3ae2f00005b000fc3f6');
     yield put(getAuthors(data));
   } catch (err) {
-    yield console.log('sadsa');
+    // yield console.log('sadsa');
   }
 }
 

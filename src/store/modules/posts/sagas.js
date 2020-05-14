@@ -8,7 +8,7 @@ function* get_post() {
     yield put(getPosts(data));
   } catch (err) {
     //  yield put(loadFailure());
-    yield console.log('sadsa');
+    // yield console.log('sadsa');
   }
 }
 
