@@ -69,14 +69,18 @@ const Post = ({ dataState, filteredByAuthor, filteredByDate }) => {
           <ItemPost key={index}>
             <HeadPost>
               <InfoPublished>
-                <TitlePost>{post.title}</TitlePost>
-                <AutorPost>{post.metadata.name}</AutorPost>
+                <TitlePost data-testid="title-post">{post.title}</TitlePost>
+                <AutorPost data-testid="author-post">
+                  {post.metadata.name}
+                </AutorPost>
               </InfoPublished>
               <DatePublished>
-                <DatePost>{getDatePost(post.metadata.publishedAt)}</DatePost>
+                <DatePost data-testid="date-post">
+                  {getDatePost(post.metadata.publishedAt)}
+                </DatePost>
               </DatePublished>
             </HeadPost>
-            <BodyPost>{post.body}</BodyPost>
+            <BodyPost data-testid="body-post">{post.body}</BodyPost>
           </ItemPost>
         ))}
       </ListPost>

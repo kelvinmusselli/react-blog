@@ -10,7 +10,9 @@ function FilterByAuthor({ dataState, setFilterByAuthor }) {
 
   return (
     <Container>
-      <SelectByAuthor onChange={(e) => handleOrder(e)}>
+      <SelectByAuthor
+        data-testid="select-by-author"
+        onChange={(e) => handleOrder(e)}>
         <option value="">Todos autores</option>
         {authors.map((author, index) => (
           <option key={index} value={author.id}>

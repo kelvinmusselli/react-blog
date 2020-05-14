@@ -9,7 +9,9 @@ function OrderPost({ setFilterByDate }) {
 
   return (
     <Container>
-      <SelectByPosts onChange={(e) => handleOrderByDate(e)}>
+      <SelectByPosts
+        data-testid="select-order-by-date"
+        onChange={(e) => handleOrderByDate(e)}>
         <option value="recent">Mais recentes</option>
         <option value="old">Mais antigos</option>
       </SelectByPosts>
