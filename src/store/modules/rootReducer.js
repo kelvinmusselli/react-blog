@@ -1,9 +1,9 @@
 import { combineReducers } from 'redux';
 
-import posts from './posts/reducer';
+import post from './post/reducer';
 import author from './author/reducer';
 
 export default combineReducers({
-  posts,
+  post,
   author,
 });
