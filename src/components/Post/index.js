@@ -15,10 +15,11 @@ import {
 import { formatDistanceToNow } from 'date-fns';
 import { pt } from 'date-fns/locale';
 
-const Post = ({ dataState, filteredByAuthor }) => {
+const Post = ({ dataState, filteredByAuthor, filteredByDate }) => {
   const posts = dataState.post.posts;
   const authors = dataState.author.authors;
   const filteredPosts = [];
+  const filteredPostsByDate = [];
 
   if (filteredByAuthor) {
     posts.find((post) => {
@@ -32,11 +33,30 @@ const Post = ({ dataState, filteredByAuthor }) => {
         const item = authors.find((val) => val.id === post.metadata.authorId);
         if (item) {
           posts[index].metadata.name = item.name;
+          posts[index].metadata.date = new Date(
+            posts[index].metadata.publishedAt
+          );
         }
         return filteredPosts.push(post);
       });
     };
     getNameAuthor();
+  }
+
+  if (filteredByDate) {
+    if (filteredByDate === 'recent') {
+      filteredPosts.sort((a, b) => {
+        var dateA = a.metadata.publishedAt;
+        var dateB = b.metadata.publishedAt;
+        return dateB - dateA;
+      });
+    } else if (filteredByDate === 'old') {
+      filteredPosts.sort((a, b) => {
+        var dateA = a.metadata.publishedAt;
+        var dateB = b.metadata.publishedAt;
+        return dateA - dateB;
+      });
+    }
   }
 
   const getDatePost = (date) => {

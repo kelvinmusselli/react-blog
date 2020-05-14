@@ -11,6 +11,7 @@ const Home = () => {
   const dataState = useSelector((state) => state);
   const dispatch = useDispatch();
   const [filteredByAuthor, setFilterByAuthor] = useState();
+  const [filteredByDate, setFilterByDate] = useState();
 
   useEffect(() => {
     dispatch(getAuthors());
@@ -24,10 +25,15 @@ const Home = () => {
           <Filters
             dataState={dataState}
             setFilterByAuthor={(val) => setFilterByAuthor(val)}
+            setFilterByDate={(val) => setFilterByDate(val)}
           />
         </HeaderContent>
         <BodyContent>
-          <Post dataState={dataState} filteredByAuthor={filteredByAuthor} />
+          <Post
+            dataState={dataState}
+            filteredByAuthor={filteredByAuthor}
+            filteredByDate={filteredByDate}
+          />
           <Summary dataState={dataState} />
         </BodyContent>
       </Content>

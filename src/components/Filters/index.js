@@ -2,13 +2,13 @@ import React from 'react';
 import FilterByAuthor from './FilterByAuthor';
 import OrderPost from './OrderPost';
 
-const Filters = ({ dataState, setFilterByAuthor }) => {
+const Filters = ({ dataState, setFilterByAuthor, setFilterByDate }) => {
   return (
     <>
       <FilterByAuthor
         dataState={dataState}
         setFilterByAuthor={setFilterByAuthor}></FilterByAuthor>
-      <OrderPost dataState={dataState}></OrderPost>
+      <OrderPost setFilterByDate={setFilterByDate}></OrderPost>
     </>
   );
 };
