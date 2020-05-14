@@ -7,8 +7,7 @@ function* get_post() {
     const data = yield call(api.get, 'v2/5be5e3ae2f00005b000fc3f6');
     yield put(getPosts(data));
   } catch (err) {
-    //  yield put(loadFailure());
-    // yield console.log('sadsa');
+    console.log('sadsa');
   }
 }
 
