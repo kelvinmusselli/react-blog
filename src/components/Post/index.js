@@ -15,20 +15,29 @@ import {
 import { formatDistanceToNow } from 'date-fns';
 import { pt } from 'date-fns/locale';
 
-const Post = ({ dataState }) => {
+const Post = ({ dataState, filteredByAuthor }) => {
   const posts = dataState.post.posts;
   const authors = dataState.author.authors;
+  const filteredPosts = [];
 
-  const getNameAuthor = () => {
-    posts.map((post, index) => {
-      const item = authors.find((val) => val.id === post.metadata.authorId);
-      if (item) {
-        return (posts[index].metadata.name = item.name);
+  if (filteredByAuthor) {
+    posts.find((post) => {
+      if (post.metadata.authorId === parseInt(filteredByAuthor)) {
+        filteredPosts.push(post);
       }
     });
-  };
-
-  getNameAuthor();
+  } else {
+    const getNameAuthor = () => {
+      posts.map((post, index) => {
+        const item = authors.find((val) => val.id === post.metadata.authorId);
+        if (item) {
+          posts[index].metadata.name = item.name;
+        }
+        return filteredPosts.push(post);
+      });
+    };
+    getNameAuthor();
+  }
 
   const getDatePost = (date) => {
     return formatDistanceToNow(date, { locale: pt });
@@ -37,7 +46,7 @@ const Post = ({ dataState }) => {
   return (
     <Container>
       <ListPost>
-        {posts.map((post, index) => (
+        {filteredPosts.map((post, index) => (
           <ItemPost key={index}>
             <HeadPost>
               <InfoPublished>
